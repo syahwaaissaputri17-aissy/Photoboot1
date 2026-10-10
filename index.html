@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#334066">
+<title>Otomotif × Engineering Photobooth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="app">
+
+  <header class="app-header">
+    <span class="gear-icon" aria-hidden="true">⚙️</span>
+    <div class="app-title">
+      <h1>Otomotif <span class="x">×</span> Engineering</h1>
+      <p>Photobooth bertema bengkel &amp; blueprint</p>
+    </div>
+  </header>
+
+  <div id="error-banner" class="error-banner hidden" role="alert"></div>
+
+  <!-- ================= SCREEN 1: START ================= -->
+  <section id="screen-start" class="screen active">
+
+    <div class="option-group">
+      <h2>1. Pilih Format Cetak</h2>
+      <div class="choice-row" id="format-options">
+        <button type="button" class="choice-card active" data-format="strip">
+          <span class="choice-preview strip-preview" aria-hidden="true">
+            <i></i><i></i><i></i><i></i>
+          </span>
+          <span class="choice-label">Photostrip Vertikal</span>
+          <span class="choice-sub">2 × 6 inci · 4 foto</span>
+        </button>
+        <button type="button" class="choice-card" data-format="collage">
+          <span class="choice-preview collage-preview" aria-hidden="true">
+            <i></i><i></i><i></i><i></i>
+          </span>
+          <span class="choice-label">Kolase 2×2</span>
+          <span class="choice-sub">4 × 6 inci · 4 foto</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="option-group">
+      <h2>2. Pilih Tema Frame</h2>
+      <div class="choice-row" id="frame-options">
+        <button type="button" class="frame-card active" data-frame="navy">
+          <span class="frame-swatch swatch-navy" aria-hidden="true"></span>
+          <span class="choice-label">Blueprint Navy</span>
+        </button>
+        <button type="button" class="frame-card" data-frame="cream">
+          <span class="frame-swatch swatch-cream" aria-hidden="true"></span>
+          <span class="choice-label">Workshop Cream</span>
+        </button>
+        <button type="button" class="frame-card" data-frame="sage">
+          <span class="frame-swatch swatch-sage" aria-hidden="true"></span>
+          <span class="choice-label">Garage Sage</span>
+        </button>
+      </div>
+    </div>
+
+    <button id="btn-start-camera" class="btn-primary btn-block">🚗 Mulai Photobooth</button>
+    <p id="support-warning" class="support-warning hidden"></p>
+  </section>
+
+  <!-- ================= SCREEN 2: CAMERA ================= -->
+  <section id="screen-camera" class="screen">
+    <div class="camera-wrap">
+      <video id="video-preview" autoplay playsinline muted></video>
+
+      <div class="shot-indicator">
+        <span id="shot-count">0</span>/<span id="shot-total">4</span>
+      </div>
+
+      <div id="countdown-overlay" class="countdown-overlay hidden">
+        <span id="countdown-number">3</span>
+      </div>
+
+      <div id="flash-overlay" class="flash-overlay"></div>
+    </div>
+
+    <div class="camera-controls">
+      <button id="btn-switch-camera" class="btn-icon" title="Ganti kamera" aria-label="Ganti kamera">🔄</button>
+      <button id="btn-capture-sequence" class="btn-primary">📸 Ambil Foto Otomatis</button>
+    </div>
+
+    <div id="thumbs-row" class="thumbs-row"></div>
+  </section>
+
+  <!-- ================= SCREEN 3: REVIEW ================= -->
+  <section id="screen-review" class="screen">
+    <h2>Review Hasil Jepretan</h2>
+    <p class="hint-text">Ketuk ikon 🔁 pada foto untuk mengambil ulang satu per satu.</p>
+    <div id="review-grid" class="review-grid"></div>
+    <div class="action-row">
+      <button id="btn-retake-all" class="btn-secondary">Ulangi Semua</button>
+      <button id="btn-continue-result" class="btn-primary">Lanjut ke Hasil →</button>
+    </div>
+  </section>
+
+  <!-- ================= SCREEN 4: RESULT ================= -->
+  <section id="screen-result" class="screen">
+    <h2>Hasil Photobooth Kamu</h2>
+    <div class="result-canvas-wrap">
+      <canvas id="final-canvas"></canvas>
+    </div>
+    <p class="print-info" id="print-info"></p>
+    <div class="action-row">
+      <button id="btn-download" class="btn-primary">⬇️ Download Kualitas Cetak</button>
+      <button id="btn-restart" class="btn-secondary">🔁 Buat Lagi</button>
+    </div>
+  </section>
+
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
